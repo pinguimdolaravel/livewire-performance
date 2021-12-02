@@ -47,9 +47,6 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $user->audits()->create([
-            'event' => 'deleted',
-        ]);
     }
 
     /**

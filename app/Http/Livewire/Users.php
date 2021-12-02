@@ -15,7 +15,8 @@ class Users extends Component
     protected $queryString = ['search'];
 
     protected $listeners = [
-        'user::updated' => '$refresh'
+        'user::updated' => '$refresh',
+        'user::deleted' => '$refresh'
     ];
 
     public function render()

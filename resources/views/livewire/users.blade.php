@@ -33,11 +33,9 @@
                                         Audit
                                     </x-button>
 
-									<livewire:user.edit :user="$item" :key="md5($item->id)" />
+									<livewire:user.edit :user="$item" :key="'edit-' . $item->id" />
+									<livewire:user.delete :user="$item" :key="'delete-' . $item->id" />
 
-                                    <x-button xs red>
-                                        Delete
-                                    </x-button>
                                 </div>
                             </x-table.td>
                         </x-table.tr>
