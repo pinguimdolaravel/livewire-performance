@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory()->create(['email' => 'pinguim@dolaravel.com', 'name' => 'Pinguim', 'password' => bcrypt('secret')]);
-        \App\Models\User::factory(100)->create();
+        User::factory()->create(['email' => 'pinguim@dolaravel.com', 'name' => 'Pinguim', 'password' => bcrypt('secret')]);
+        User::factory(100)->create();
+
+        foreach (User::all() as $user) {
+            $user->update(['name' => $user->name . ' - ' . $user->id, 'email' => $user->id . '.' . $user->email]);
+        }
     }
 }
