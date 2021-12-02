@@ -12,6 +12,7 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+	<livewire:styles>
 </head>
 
 <body class="font-sans antialiased">
@@ -30,6 +31,7 @@
             {{ $slot }}
         </main>
     </div>
+	<livewire:scripts>
 </body>
 
 </html>

@@ -31,6 +31,9 @@
                                 </x-table.td>
                                 <x-table.td>
                                     <div class="flex space-x-2">
+										<x-button outline xs gray>
+											Audit
+										</x-button>
                                         <x-button xs>
                                             Edit
                                         </x-button>
