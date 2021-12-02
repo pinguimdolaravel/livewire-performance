@@ -14,6 +14,10 @@ class Users extends Component
 
     protected $queryString = ['search'];
 
+    protected $listeners = [
+        'user::updated' => '$refresh'
+    ];
+
     public function render()
     {
         return view('livewire.users', [
