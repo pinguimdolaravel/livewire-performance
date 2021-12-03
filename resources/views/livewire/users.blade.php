@@ -1,12 +1,14 @@
 <div>
     <div class="space-y-4 lg:space-y-4">
-        <x-h1>Users</x-h1>
+        <x-h1>
+			Users ( {{ $this->totalFiltered }}/{{ $this->total }} )
+		</x-h1>
 
         <div class="flex items-center space-x-2 whitespace-nowrap">
-            <x-input.text name="search" labeless placeholder="Search ..." wire:model="search" />
-			<x-button wire:click="$set('search', '')">
-				Clear Search
-			</x-button>
+            <x-input.text name="search" labeless placeholder="Search ..." wire:model.debounce.500ms="search" />
+            <x-button wire:click="$set('search', '')">
+                Clear Search
+            </x-button>
         </div>
 
         <x-card>
@@ -29,13 +31,9 @@
                             </x-table.td>
                             <x-table.td>
                                 <div class="flex space-x-2">
-                                    <x-button outline xs gray>
-                                        Audit
-                                    </x-button>
-
-									<livewire:user.edit :user="$item" :key="'edit-' . $item->id" />
-									<livewire:user.delete :user="$item" :key="'delete-' . $item->id" />
-
+                                    <livewire:user.audits :user="$item" :key="'audits-'. $item->id" />
+                                    <livewire:user.edit :user="$item" :key="'edit-' . $item->id" />
+                                    <livewire:user.delete :user="$item" :key="'delete-' . $item->id" />
                                 </div>
                             </x-table.td>
                         </x-table.tr>

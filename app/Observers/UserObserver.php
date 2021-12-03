@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class UserObserver
 {
@@ -17,6 +18,8 @@ class UserObserver
         $user->audits()->create([
             'event' => 'created',
         ]);
+
+        Cache::delete('users.count');
     }
 
     /**
@@ -47,6 +50,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
+        Cache::delete('users.count');
     }
 
     /**
